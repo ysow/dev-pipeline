@@ -48,7 +48,7 @@ jobs:
           playbook: ansible/playbook.yaml
           inventory: |
             [all]
-            ${{ secrets.INSTANCE_IP }} ansible_user=root ansible_ssh_private_key='${{ secrets.SSH_PRIVATE_KEY }}'
+            ${{ secrets.INSTANCE_IP }} ansible_user=root ansible_ssh_private_key_file=./id_rsa
           options: |
             -e registry_user=${{ secrets.SCW_REGISTRY_USER }}
             -e registry_token=${{ secrets.SCW_REGISTRY_TOKEN }}
