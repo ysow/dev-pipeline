@@ -35,6 +35,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Write private key to file
+        run: |
+          echo "$SSH_PRIVATE_KEY" > id_rsa
+          chmod 600 id_rsa
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          
       - name: Run Ansible Playbook
         uses: dawidd6/action-ansible-playbook@v2
         with:
