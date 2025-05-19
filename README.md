@@ -1,6 +1,6 @@
 # dev-pipeline
 
-This project demonstrates how to migrate a containerized application from AWS ECS to Scaleway Compute Instances using:
+This project demonstrates how to deploy workloads on scaleway and automate the pipeline of deployment using : 
 
 - **Terraform** for infrastructure provisioning
 - **Ansible** for Docker setup
