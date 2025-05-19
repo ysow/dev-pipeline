@@ -1,0 +1,32 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    registry_name: "<registry-name>"
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        update_cache: yes
+        state: present
+
+    - name: Enable Docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Docker login to Scaleway Container Registry
+      docker_login:
+        registry_url: rg.fr-par.scw.cloud
+        username: "{{ registry_user }}"
+        password: "{{ registry_token }}"
+
+    - name: Run container
+      docker_container:
+        name: demo-app
+        image: rg.fr-par.scw.cloud/{{ registry_name }}/demo-app:latest
+        state: started
+        restart_policy: always
+        ports:
+          - "80:80"
