@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -e
+echo "in scripts"
 
 INSTANCE_ID="$1"
 VOLUME_ID="$2"

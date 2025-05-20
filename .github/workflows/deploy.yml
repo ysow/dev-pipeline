@@ -74,7 +74,7 @@ jobs:
 
       - name: Run autoscaling setup script
         run: |
-          bash scripts/autoscaling_setup.sh \
+          bash ../scripts/autoscaling_setup.sh \
             # ${{ secrets.INSTANCE_ID }} \
             ${{ secrets.INSTANCE_VOLUME_ID }} \
             # # ${{ secrets.PRIVATE_NETWORK_ID }} \
