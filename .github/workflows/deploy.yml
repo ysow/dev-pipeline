@@ -55,7 +55,7 @@ jobs:
             -e registry_token=${{ secrets.SCW_REGISTRY_TOKEN }}
             -e registry_name=${{ secrets.SCW_REGISTRY_NAME }}
 
-    autoscaling:
+  autoscaling:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
