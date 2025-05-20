@@ -10,6 +10,8 @@ VOLUME_ID="$2"
 # BACKEND_ID="$6"
 ZONE="${SCW_DEFAULT_ZONE:-fr-par-1}"
 
+echo "📸 Snapshot en creation"
+
 # 1. Créer un snapshot à partir du volume root
 SNAPSHOT_ID=$(curl -s -X POST "https://api.scaleway.com/instance/v1/zones/$ZONE/snapshots" \
   -H "X-Auth-Token: $SCW_SECRET_KEY" \
