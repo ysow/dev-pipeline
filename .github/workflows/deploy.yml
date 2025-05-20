@@ -56,6 +56,9 @@ jobs:
             -e registry_name=${{ secrets.SCW_REGISTRY_NAME }}
 
   autoscaling:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
       - name: Run autoscaling setup script
         run: bash scripts/autoscaling_setup.sh
         env:
