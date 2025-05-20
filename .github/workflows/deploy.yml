@@ -55,31 +55,31 @@ jobs:
             -e registry_token=${{ secrets.SCW_REGISTRY_TOKEN }}
             -e registry_name=${{ secrets.SCW_REGISTRY_NAME }}
 
-  autoscaling:
-    needs: deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # autoscaling:
+    # needs: deploy
+    # runs-on: ubuntu-latest
+    # steps:
+      # - name: Checkout code
+        # uses: actions/checkout@v2
 
-      - name: Write SSH key
-        run: |
-          echo "$SSH_PRIVATE_KEY" > id_rsa
-          chmod 600 id_rsa
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      # - name: Write SSH key
+        # run: |
+          # echo "$SSH_PRIVATE_KEY" > id_rsa
+          # chmod 600 id_rsa
+        # env:
+          # SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install -y jq curl
+      # - name: Install dependencies
+        # run: sudo apt-get update && sudo apt-get install -y jq curl
 
-      - name: Run autoscaling setup script
-        run: |
-          bash scripts/autoscaling_setup.sh \
-            ${{ secrets.INSTANCE_VOLUME_ID }} \
-        env:
-          SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
-          SCW_PROJECT_ID: ${{ secrets.SCW_PROJECT_ID }}
-          SCW_DEFAULT_ZONE: ${{ secrets.SCW_DEFAULT_ZONE }}
+      # - name: Run autoscaling setup script
+        # run: |
+          # bash scripts/autoscaling_setup.sh \
+            # ${{ secrets.INSTANCE_VOLUME_ID }} \
+        # env:
+          # SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
+          # SCW_PROJECT_ID: ${{ secrets.SCW_PROJECT_ID }}
+          # SCW_DEFAULT_ZONE: ${{ secrets.SCW_DEFAULT_ZONE }}
 
 
 
