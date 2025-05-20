@@ -34,8 +34,12 @@ variable "tags" {
 
 variable "env" {
   type    = string
-  default = "test"
+  default = "dev"
 }
 
 variable "private_key_path" {}
 # scaleway.auto.tfvars
+locals {
+  name = "test"
+  tags = concat(["terraform=true"],var.tags, [var.env])
+}
