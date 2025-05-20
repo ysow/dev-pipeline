@@ -75,12 +75,7 @@ jobs:
       - name: Run autoscaling setup script
         run: |
           bash scripts/autoscaling_setup.sh \
-            # ${{ secrets.INSTANCE_ID }} \
             ${{ secrets.INSTANCE_VOLUME_ID }} \
-            # # ${{ secrets.PRIVATE_NETWORK_ID }} \
-            # ${{ secrets.SCW_PROJECT_ID }} \
-            # ${{ secrets.LOAD_BALANCER_ID }} \
-            # ${{ secrets.BACKEND_ID }}
         env:
           SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
           SCW_PROJECT_ID: ${{ secrets.SCW_PROJECT_ID }}
