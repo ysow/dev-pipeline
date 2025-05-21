@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-echo "in scripts"
+echo "in scripts autoscaling"
 
 INSTANCE_ID="$1"
 VOLUME_ID="$2"
